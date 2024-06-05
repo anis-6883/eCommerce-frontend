@@ -6,14 +6,14 @@ enum MODE {
 }
 
 export const siteConfig = {
-  title: 'StampEzee',
-  description: `StampEzee is a comprehensive stamp collection system designed to streamline the process of purchasing stamps by order`,
+  title: 'e-commerce',
+  description: `Discover a seamless online shopping experience with [Your E-commerce Platform].`,
   mode: MODE.LIGHT,
 };
 
 export const metaObject = (title?: string, description: string = siteConfig.description): Metadata => {
   return {
-    title: title ? `${title} - StampEzee` : siteConfig.title,
+    title: title ? `${title} - Ecommerce` : siteConfig.title,
     description,
   };
 };

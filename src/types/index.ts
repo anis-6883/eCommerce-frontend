@@ -14,7 +14,7 @@ export interface IOption {
 }
 
 export interface IAuthState {
-  user?: any | undefined;
+  user?: IUser;
   role: string;
 }
 

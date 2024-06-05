@@ -1,7 +1,7 @@
 'use client';
 
 import { routes } from '@/config/routes';
-import { useAdminLoginMutation } from '@/features/auth/authApi';
+import { useSuperAdminLoginMutation } from '@/features/auth/authApi';
 import { userLoggedIn } from '@/features/auth/authSlice';
 import { Field, Form, Formik } from 'formik';
 import { useRouter } from 'next/navigation';
@@ -29,7 +29,8 @@ export default function LoginForm() {
     password: Yup.string().required('Please enter your password'),
   });
 
-  const [adminLogin, { data: loginResponse, isSuccess: loginSuccess, isError: isLoginError, error: loginError }] = useAdminLoginMutation();
+  const [adminLogin, { data: loginResponse, isSuccess: loginSuccess, isError: isLoginError, error: loginError }] =
+    useSuperAdminLoginMutation();
 
   // Handle Login Response
   useEffect(() => {

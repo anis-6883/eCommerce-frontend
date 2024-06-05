@@ -2,7 +2,7 @@
 
 import { routes } from '@/config/routes';
 import { useLogoutUserMutation } from '@/features/auth/authApi';
-import { setValue } from '@/features/auth/authSlice';
+import { setValue, userLoggedOut } from '@/features/auth/authSlice';
 import { RootState } from '@/features/store';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
@@ -36,7 +36,7 @@ function DropdownMenu() {
     logOut(null)
       .then((res) => {
         replace(routes.adminLogin);
-        dispatch(setValue({ target: 'user', value: undefined }));
+        dispatch(userLoggedOut(undefined));
       })
       .catch((err) => {
         console.log(err);

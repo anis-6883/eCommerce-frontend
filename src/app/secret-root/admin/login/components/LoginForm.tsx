@@ -1,11 +1,12 @@
 'use client';
 
 import { routes } from '@/config/routes';
-import { useAdminLoginMutation } from '@/features/auth/authApi';
+import { useSuperAdminLoginMutation } from '@/features/auth/authApi';
 import { userLoggedIn } from '@/features/auth/authSlice';
 import { Field, Form, Formik } from 'formik';
+import { divide } from 'lodash';
 import { useRouter } from 'next/navigation';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { ImSpinner9 } from 'react-icons/im';
 import { LuMail, LuUnlock } from 'react-icons/lu';
@@ -16,7 +17,6 @@ import * as Yup from 'yup';
 export default function LoginForm() {
   const { replace } = useRouter();
   const dispatch = useDispatch();
-  const emailInputRef = useRef<HTMLInputElement>(null);
   const [submitting, setSubmitting] = useState(false);
 
   const initialValues = {
@@ -29,13 +29,15 @@ export default function LoginForm() {
     password: Yup.string().required('Required!'),
   });
 
-  const [adminLogin, { data: loginResponse, isSuccess: loginSuccess, isError: isLoginError, error: loginError }] = useAdminLoginMutation();
+  const [superAdminLogin, { data: loginResponse, isSuccess: loginSuccess, isError: isLoginError, error: loginError }] =
+    useSuperAdminLoginMutation();
 
   // Handle Login Response
   useEffect(() => {
     if (isLoginError) {
       setSubmitting(false);
       if ('status' in loginError) {
+        console.log('loginError', loginError);
         if (loginError.status === 401) {
           toast.error('Invalid Credentials!');
         } else {
@@ -46,35 +48,22 @@ export default function LoginForm() {
 
     if (loginSuccess) {
       if (loginResponse?.status) {
-        toast.success('Login Successful!');
-        dispatch(userLoggedIn(loginResponse?.data));
-
-        if (['admin', 'retailer'].includes(loginResponse?.data?.role)) {
-          replace(routes.admin.dashboard);
-        }
-
-        if (loginResponse?.data?.role === 'user') {
-          replace(routes.user.profile);
-        }
+        toast.success(loginResponse.message || 'Login Successful!');
+        console.log(loginResponse);
+        dispatch(userLoggedIn(loginResponse.data));
+        replace(routes.admin.dashboard);
       } else {
         setSubmitting(false);
         toast.error(loginResponse?.message);
       }
     }
-  }, [loginError, isLoginError, loginSuccess, loginResponse, replace, dispatch]);
-
-  // Auto Focus
-  useEffect(() => {
-    if (emailInputRef.current) {
-      emailInputRef.current.focus();
-    }
-  }, []);
+  }, [loginError, loginSuccess, loginResponse, replace, dispatch, isLoginError]);
 
   // Submit Handler
   const handleSubmit = (values: any) => {
     setSubmitting(true);
 
-    adminLogin({
+    superAdminLogin({
       email: values.email,
       password: values.password,
     });
@@ -84,10 +73,10 @@ export default function LoginForm() {
     <Formik initialValues={initialValues} validationSchema={loginSchema} onSubmit={handleSubmit}>
       {() => {
         return (
-          <Form>
+          <Form className="space-y-7">
             <Field name="email">
               {({ field, meta }: { field: any; meta: any }) => (
-                <div className="mt-3">
+                <div>
                   <Input
                     size="lg"
                     label={
@@ -98,20 +87,19 @@ export default function LoginForm() {
                       </p>
                     }
                     variant="outline"
-                    color="primary"
+                    color="error"
                     labelClassName="text-base"
                     autoComplete="off"
                     placeholder={'john@example.com'}
-                    ref={emailInputRef}
+                    error={meta.touched && meta.error}
                     {...field}
                   />
-                  {meta.touched && meta.error && <p className="mt-1 select-none px-1 font-medium text-red">{meta.error}</p>}
                 </div>
               )}
             </Field>
             <Field name="password">
               {({ field, meta }: { field: any; meta: any }) => (
-                <div className="mt-3">
+                <div>
                   <Password
                     size="lg"
                     label={
@@ -125,13 +113,13 @@ export default function LoginForm() {
                     labelClassName="text-base"
                     autoComplete="off"
                     placeholder="********"
+                    error={meta.touched && meta.error}
                     {...field}
                   />
-                  {meta.touched && meta.error && <p className="mt-1 select-none px-1 font-medium text-red">{meta.error}</p>}
                 </div>
               )}
             </Field>
-            <div className="mt-5 justify-end">
+            <div>
               <Button
                 color="primary"
                 type="submit"
