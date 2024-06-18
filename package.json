@@ -1,7 +1,7 @@
 {
-  "name": "stampezee",
+  "name": "e-commerce",
   "version": "1.0",
-  "description": "StampEzee is a comprehensive stamp collection system designed to streamline the process of purchasing stamps by order.",
+  "description": "",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -37,6 +37,7 @@
     "react-flatpickr": "^3.10.13",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^5.1.0",
+    "react-phone-input-2": "^2.15.1",
     "react-quill": "^2.0.0",
     "react-redux": "^9.1.1",
     "react-select": "^5.8.0",

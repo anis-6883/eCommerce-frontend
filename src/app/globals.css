@@ -198,7 +198,7 @@
   h4,
   h5,
   h6 {
-    @apply font-lexend font-bold text-gray-900 dark:text-gray-700;
+    @apply font-bold text-gray-900 dark:text-gray-700;
   }
 
   h1 {
@@ -790,10 +790,6 @@ div[style='z-index: 1000001;'],
   @apply border-t border-gray-200;
 }
 
-.rbc-today {
-  @apply bg-blue-lighter/10;
-}
-
 .rbc-day-slot .rbc-time-slot,
 .rbc-timeslot-group {
   @apply border-gray-200 dark:!border-gray-400;
@@ -878,7 +874,7 @@ div[style='z-index: 1000001;'],
 }
 
 .rbc-toolbar-label {
-  @apply font-lexend text-xl font-medium text-gray-900 dark:text-white;
+  @apply text-xl font-medium text-gray-900 dark:text-white;
 }
 
 .rbc-agenda-view {

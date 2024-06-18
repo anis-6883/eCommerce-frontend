@@ -33,7 +33,7 @@ export default async function Page() {
           </div>
           <div className="mt-5">
             Already have an account?
-            <Link href="/login" className="py-4 text-red">
+            <Link href="/login" className="text-red py-4">
               Sign in
             </Link>
           </div>

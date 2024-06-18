@@ -36,7 +36,7 @@ export default async function middleware(req: NextRequest) {
       return NextResponse.redirect(new URL('/login', req.nextUrl));
     }
 
-    const role: 'admin' | 'user' | 'retailer' = response?.data?.role;
+    const role: 'admin' | 'customer' = response?.data?.role;
 
     // Redirect to Admin Dashboard
     if (['admin', 'retailer'].includes(role) && path.startsWith('/login')) {
@@ -44,7 +44,7 @@ export default async function middleware(req: NextRequest) {
     }
 
     // Redirect to User Dashboard
-    if (role === 'user' && (path.startsWith('/login') || adminProtectedRoutes.includes(path))) {
+    if (role === 'customer' && (path.startsWith('/login') || adminProtectedRoutes.includes(path))) {
       return NextResponse.redirect(new URL('/profile', req.nextUrl));
     }
   }

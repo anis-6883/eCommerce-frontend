@@ -6,7 +6,7 @@ export default {
     './src/**/*.{js,ts,jsx,tsx}',
     './node_modules/rizzui/dist/*.{js,ts,jsx,tsx}', // must use this line to compile and generate our RizzUI components style
   ],
-  darkMode: ['class', '[data-theme="dark"]'],
+  // darkMode: ['class', '[data-theme="dark"]'],
   theme: {
     screens: {
       xs: '480px',
@@ -35,54 +35,16 @@ export default {
           900: 'rgb(var(--gray-900) / <alpha-value>)',
           1000: 'rgb(var(--gray-1000) / <alpha-value>)',
         },
-        primary: {
-          DEFAULT: '#3872FA',
-          red: '#DF2828',
-          black: '#212B36',
-        },
-        secondary: {
-          lighter: 'rgb(var(--secondary-lighter) / <alpha-value>)',
-          light: 'rgb(var(--secondary-light) / <alpha-value>)',
-          DEFAULT: 'rgb(var(--secondary-default) / <alpha-value>)',
-          dark: 'rgb(var(--secondary-dark) / <alpha-value>)',
-        },
-        red: {
-          lighter: 'rgb(var(--red-lighter) / <alpha-value>)',
-          light: 'rgb(var(--red-light) / <alpha-value>)',
-          DEFAULT: 'rgb(var(--red-default) / <alpha-value>)',
-          dark: 'rgb(var(--red-dark) / <alpha-value>)',
-          '200': '#FFCCCC',
-          '300': '#FF9999',
-          '400': '#FF6666',
-          '500': '#FF3333',
-          '600': '#FF0000',
-          '700': '#CC0000',
-          '800': '#990000',
-          '900': '#660000',
-        },
-        orange: {
-          lighter: 'rgb(var(--orange-lighter) / <alpha-value>)',
-          light: 'rgb(var(--orange-light) / <alpha-value>)',
-          DEFAULT: 'rgb(var(--orange-default) / <alpha-value>)',
-          dark: 'rgb(var(--orange-dark) / <alpha-value>)',
-        },
-        blue: {
-          lighter: 'rgb(var(--blue-lighter) / <alpha-value>)',
-          light: 'rgb(var(--blue-light) / <alpha-value>)',
-          DEFAULT: 'rgb(var(--blue-default) / <alpha-value>)',
-          dark: 'rgb(var(--blue-dark) / <alpha-value>)',
-        },
-        green: {
-          lighter: 'rgb(var(--green-lighter) / <alpha-value>)',
-          light: 'rgb(var(--green-light) / <alpha-value>)',
-          DEFAULT: 'rgb(var(--green-default) / <alpha-value>)',
-          dark: 'rgb(var(--green-dark) / <alpha-value>)',
-        },
+        primary: '#3872FA',
+        secondary: '#5C636A',
+        warning: '#FFC107',
+        success: '#198754',
+        danger: '#DC3545',
+        info: '#0DCAF0',
+        light: '#D3D4D5',
       },
       fontFamily: {
         poppins: ['var(--font-poppins)'],
-        lexend: ['var(--font-lexend)'],
-        // publicSans: ['var(--font-public-sans)'],
       },
       // required these animations for the Loader component
       animation: {

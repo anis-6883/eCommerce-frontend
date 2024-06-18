@@ -20,13 +20,13 @@ export default function Sidebar({ className }: { className?: string }) {
   return (
     <aside
       className={cn(
-        'fixed bottom-0 start-0 z-50 h-full w-[270px] border-e-2 border-gray-100 bg-white dark:bg-gray-100/50 2xl:w-72',
+        'fixed bottom-0 start-0 z-50 h-full w-[270px] border-e-2 border-gray-100 bg-white 2xl:w-72 dark:bg-gray-100/50',
         className
       )}
     >
-      <div className="sticky top-0 z-40 bg-gray-0/10 px-6 pb-2 pt-2 dark:bg-gray-100/5 2xl:px-6 2xl:pt-2">
+      <div className="sticky top-0 z-40 bg-gray-0/10 px-6 pb-2 pt-2 2xl:px-6 2xl:pt-2 dark:bg-gray-100/5">
         <Link href={routes.admin.dashboard} aria-label="Site Logo">
-          <img src="/images/logo.png" width={80} height={50} alt="logo" className="m-auto pt-2" />
+          <img src="/images/online-shop.png" alt="logo" className="m-auto w-16 pt-2" />
         </Link>
       </div>
 

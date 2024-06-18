@@ -47,7 +47,7 @@ export default function InputField({
             ref={ref}
             {...field}
           />
-          <p className="mt-1 h-3 select-none px-1 font-medium text-red">{meta.touched && meta.error && meta.error}</p>
+          <p className="text-red mt-1 h-3 select-none px-1 font-medium">{meta.touched && meta.error && meta.error}</p>
         </div>
       )}
     </Field>
