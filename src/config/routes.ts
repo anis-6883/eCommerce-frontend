@@ -1,6 +1,8 @@
 export const routes = {
-  home: '/project-admin',
-  adminLogin: '/login',
+  home: '/',
+  adminLogin: '/secret-root/admin/login',
+  customerLogin: '/login',
+  customerRegister: '/register',
   user: {
     profile: '/profile',
   },

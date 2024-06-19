@@ -11,6 +11,46 @@ export const authApi = apiSlice.injectEndpoints({
         };
       },
     }),
+    customerGetProfile: builder.query({
+      query: () => `api/customer/profile`,
+      // providesTags: ['customerProfile'],
+    }),
+    customerRegister: builder.mutation({
+      query: (data) => {
+        return {
+          url: `api/customer/auth/register`,
+          method: 'POST',
+          body: data,
+        };
+      },
+    }),
+    customerOtpVerify: builder.mutation({
+      query: (data) => {
+        return {
+          url: `api/customer/auth/otp-verify`,
+          method: 'POST',
+          body: data,
+        };
+      },
+    }),
+    customerResendOtp: builder.mutation({
+      query: (data) => {
+        return {
+          url: `api/customer/auth/resend-otp`,
+          method: 'POST',
+          body: data,
+        };
+      },
+    }),
+    customerLogin: builder.mutation({
+      query: (data) => {
+        return {
+          url: `/api/customer/auth/login`,
+          method: 'POST',
+          body: data,
+        };
+      },
+    }),
     logoutUser: builder.mutation({
       query: () => {
         return {
@@ -30,4 +70,11 @@ export const authApi = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useGetProfileQuery, useSuperAdminLoginMutation, useGetOwnProfileQuery, useLogoutUserMutation } = authApi;
+export const {
+  useGetProfileQuery,
+  useGetOwnProfileQuery,
+  useLogoutUserMutation,
+  useCustomerLoginMutation,
+  useSuperAdminLoginMutation,
+  useCustomerRegisterMutation,
+} = authApi;

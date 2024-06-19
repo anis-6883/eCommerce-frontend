@@ -11,7 +11,7 @@ export default async function Page() {
       <div className="w-[600px] rounded-md bg-[#1C2632] p-5 shadow-xl md:p-10">
         <div className="p-2">
           <img src="/images/online-shop.png" className="m-auto my-5 w-32" alt="logo" />
-          <h2 className="mb-5 text-center text-lg font-semibold">Login</h2>
+          <h2 className="mb-5 text-center text-lg font-semibold">Admin Login</h2>
           <LoginForm />
         </div>
       </div>
