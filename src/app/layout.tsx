@@ -1,5 +1,5 @@
-import { poppins } from '@/app/fonts';
 import '@/app/globals.css';
+import { poppins } from '@/app/fonts';
 import GlobalDrawer from '@/components/drawer-views/container';
 import GlobalModal from '@/components/modal-views/container';
 import { siteConfig } from '@/config/site.config';

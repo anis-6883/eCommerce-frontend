@@ -77,4 +77,6 @@ export const {
   useCustomerLoginMutation,
   useSuperAdminLoginMutation,
   useCustomerRegisterMutation,
+  useCustomerResendOtpMutation,
+  useCustomerOtpVerifyMutation,
 } = authApi;
